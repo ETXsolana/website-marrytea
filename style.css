@@ -1,0 +1,596 @@
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  /** KEEP A BIT AS INSPIRATION HOW TO CODE **/
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(205, 86%, 17%);
+  --clr-primary-2: hsl(205, 77%, 27%);
+  --clr-primary-3: hsl(205, 72%, 37%);
+  --clr-primary-4: hsl(205, 63%, 48%);
+  /* primary/main color */
+  --clr-primary-5: hsl(205, 78%, 60%);
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(205, 89%, 70%);
+  --clr-primary-7: hsl(205, 90%, 76%);
+  --clr-primary-8: hsl(205, 86%, 81%);
+  --clr-primary-9: hsl(205, 90%, 88%);
+  --clr-primary-10: hsl(205, 100%, 96%);
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+
+  --primary-1-orange: hsl(21, 71%, 48%);
+  --primary-2-grey: hsl(0, 0%, 69%);
+}
+
+
+
+
+/*
+=============== 
+Global Styles
+===============
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+
+
+
+/*
+==========
+NAVIGATION
+==========
+*/
+
+nav {
+  background: #fff;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+}
+
+.logo {
+  display: flex;
+}
+
+#logo-symbol {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-top: 0.4rem;
+  margin-right: 0.7rem;
+}
+
+.nav-header h1 {
+  font-size: 2.1rem;
+}
+
+.basket-and-bars {
+  display: flex;
+  align-items: center;
+}
+
+#tea-pot {
+  align-items: center;
+  margin-right: 0.3rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  /*visibility: hidden;*/
+}
+
+.basket-and-bars a {
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  justify-content: center;
+}
+
+
+
+
+
+/*
+======
+BANNER
+======
+*/
+
+.banner {
+  margin-top: 0.7rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.container1 h2 span {
+  color: var(--primary-1-orange);
+}
+
+.section {
+  margin-top: 0.7rem;
+  background: var(--primary-2-grey);
+}
+
+.section button,
+.section input {
+  cursor: pointer;
+}
+
+
+
+/*
+==================
+CHOOSE INGREDIENTS
+==================
+*/
+
+.ingredient-btns {
+  display: flex;
+  margin-top: 0.3rem;
+  justify-content: space-between;
+}
+
+.ingredient-btns button {
+  cursor: pointer;
+}
+
+
+
+
+/*
+====================
+DRAG & TEA ANIMATION
+====================
+*/
+
+
+
+/** GRID CONTAINER **/
+/** -------------- **/
+
+.grid-container {
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 11fr);
+  /* minmax (0, xfr) prevents the drag text from an overflow issue*/
+  grid-template-columns: minmax(0, 25%) minmax(0, 25%) minmax(0, 1fr) minmax(0, 4fr);
+  row-gap: 0.5rem;
+}
+
+.item {
+  background: var(--primary-2-grey);
+  /*border: 0.0625rem solid black*/
+  /*To make indiv. Item outlines visible*/
+}
+
+/* Positioning and Aligning Items by Grid-Lines */
+.organic-btn {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  justify-self: center;
+  align-self: center;
+  z-index: 1;
+  margin-top: -2rem;
+}
+
+.organic-btn button {
+  cursor: pointer;
+  border-radius: 100%;
+  padding: 0.5rem;
+}
+
+.drag-text {
+  min-width: 0;
+  max-width: 100%;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  justify-self: start;
+  align-self: center;
+  margin-left: 0.25rem;
+}
+
+.tea-cup-animation {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  align-self: end;
+  justify-self: center;
+  background: var(--primary-2-grey);
+}
+
+
+
+/** TEA GLASS ANIMATION **/
+
+.main {
+  margin: 0;
+}
+
+.cup {
+  width: 7.3rem;
+  height: 10.5rem;
+  border-radius: 50%;
+  border-bottom: 0.44rem solid #949ca9;
+  margin: 0 auto -1.25rem;
+  position: relative;
+  background: linear-gradient(2deg, #9fa8b55e 10%, transparent 50%);
+}
+
+.cup::before,
+.cup::after {
+  content: "";
+  position: absolute;
+}
+
+.cup::before {
+  width: 6.6rem;
+  height: 1.5rem;
+  border-right: 0.44rem solid #808793;
+  border-top: 0.19rem solid #808793;
+  border-bottom: 0.19rem solid #808793;
+  border-radius: 50%;
+  border-left: 0.25rem solid;
+  top: 4.4rem;
+}
+
+.cup::after {
+  width: 3.7rem;
+  height: 2.5rem;
+  border-right: 0.31rem solid #949ca9;
+  border-radius: 0 5.13rem 6.31rem 0;
+  right: -0.69rem;
+  top: 6.13rem;
+  transform: rotate(10deg);
+}
+
+.smoke-holder span {
+  animation: smoke 2.2s linear infinite;
+  position: absolute;
+  border: 0.13rem solid rgba(128, 128, 128, 0.6);
+  width: 0.13rem;
+  height: 0.63rem;
+  top: 6.88rem;
+  left: 3.75rem;
+  z-index: 1;
+  filter: blur(0.19rem);
+}
+
+.smoke-holder span:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+
+.smoke-holder span:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+
+.smoke-holder span:nth-of-type(4) {
+  animation-delay: 0.9s;
+}
+
+.smoke-holder span:nth-of-type(5) {
+  animation-delay: 1.2s;
+}
+
+.smoke-holder span:nth-of-type(6) {
+  animation-delay: 1.5s;
+}
+
+@keyframes smoke {
+
+  25%,
+  75% {
+    left: 3.13rem;
+  }
+
+  50% {
+    left: 3.75rem;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: -1.25rem;
+    left: 3.75rem;
+    filter: blur(0.25rem);
+    opacity: 0;
+    transform: scale(6);
+  }
+}
+
+.tea {
+  position: absolute;
+  width: 6.65rem;
+  height: 3.2rem;
+  left: 50%;
+  background: rgba(111, 78, 55, 0.7);
+  border-radius: 0 0 13.5rem 13.5rem;
+  transform: translate(-50%, 0);
+  bottom: 0.063rem;
+  z-index: 1;
+}
+
+.tea::before {
+  animation: shaketea 1.2s alternate linear infinite;
+  background: #6f4e37;
+  border-radius: 50%;
+  content: "";
+  top: -0.25rem;
+  /*width: 6.38rem;*/
+  width: 102%;
+  height: 0.75rem;
+  left: 50%;
+  outline: 0.063rem solid transparent;
+  transform: translate(-50%, 0) rotate(0);
+  position: absolute;
+}
+
+saucer::after {
+  content: "";
+  position: absolute;
+  height: 1.25rem;
+  width: 5.13rem;
+  background: #9fa8b5;
+  top: 1.63rem;
+  left: 1.75rem;
+  border-radius: 0rem 0rem 1.56rem 1.56rem;
+}
+
+.saucer {
+  margin: auto;
+  width: 9.38rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 0.44rem solid #9fa8b5;
+  border-top: none;
+  position: relative;
+  z-index: -2;
+  background: #9fa8b5;
+}
+
+saucer::after {
+  content: "";
+  position: absolute;
+  width: 40%;
+  border: 0.25rem solid #9199a5;
+  z-index: -1;
+  left: 50%;
+  transform: translate(-50%, -38%);
+  top: 50%;
+  border-radius: 50%;
+  height: 42%;
+}
+
+@keyframes shaketea {
+  100% {
+    transform: translate(-50%, 0) rotate(2deg);
+  }
+}
+
+
+
+/** MULTI-SLIDER **/
+
+/* Has some Errors in Positioning doesnt align smoothly to the start 
+and TypeError: number is null */
+.multi-range-slider {
+  width: 12.5rem;
+  max-height: 100%;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  align-self: start;
+  justify-self: center;
+  transform: rotate(90deg);
+  margin-top: 6.5rem;
+}
+
+.multi-range-slider input {
+  width: 100%;
+  cursor: pointer;
+}
+
+/** IGREDIENTS **/
+
+.ingredient-list {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  align-self: center;
+  justify-self: start;
+  margin-left: 0.25rem;
+}
+
+.ingredient-list p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+
+
+
+/*
+===============
+CHOOSE QUANTITY
+===============
+*/
+
+.quantity-btns {
+  display: flex;
+  margin-top: 0.3rem;
+  justify-content: space-around;
+}
+
+.quantity-range {
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.quantity-range input {
+  width: 100%;
+}
+
+
+
+
+
+
+/*
+================
+CHOOSE PACKAGING
+================
+*/
+
+.packaging-btns {
+  display: flex;
+  margin-top: 0.3rem;
+  justify-content: space-around;
+}
+
+.packaging-btns button {
+  cursor: pointer;
+}
+
+.packaging-btns img {
+  width: 2rem;
+  height: 2rem;
+}
+
+
+
+
+
+/*
+========
+NAME TEA
+========
+*/
+
+.name-tea input {
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+
+
+
+
+/*
+==================
+PRICE AND CHECKOUT
+==================
+*/
+
+#price-and-checkout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+/** SHARE BUTTON **/
+
+.share-btn {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.share-btn img {
+  width: 2rem;
+  height: 2rem;
+}
+
+
+
+
+
+/*
+=======================================================
+===                    FOOTER                       ===
+=======================================================
+*/
+/** FOOTER POSITIONING NOOB VARIANT **/
+
+#page-container {
+  position: relative;
+  min-height: 110vh;
+}
+
+#content-wrap {
+  /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  background: #d1b6cd;
+  /* Footer height */
+}
+
+/** Footer positioning nobb variant end **/
+
+
+footer a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/** SOCIALS **/
+
+.socials {
+  width: 1rem;
+  height: 1rem;
+}

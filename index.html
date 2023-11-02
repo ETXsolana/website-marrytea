@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Tea Cup - CSS Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- NOOB VARIANT TO KEEP FOOTER AT THE BOTTOM, BETTER USE GRID-->
+  <div id="page-container">
+    <div id="content-wrap">
+      <!-- NOOB VARIANT TO KEEP FOOTER AT THE BOTTOM -->
+      <!-- all other page content -->
+      <header id="home">
+        <nav>
+          <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+              <div class="logo">
+                <img src="images/logo_drawing2.webp" id="logo-symbol">
+                <h1>marryTea</h1>
+              </div>
+              <div class="basket-and-bars">
+                <!-- Tea pot as a shoping bag icon with a little number which counts
+            the mixes and items in the bag on the top right of it-->
+                <img src="images/tea_pot.webp" id="tea-pot">
+                <a href="#" class="nav-toggle">
+                  <img id="bars-icon" src="images/bars-solid.svg" alt="bar icon, to open nav-links">
+                </a>
+              </div>
+            </div>
+            <!-- links -->
+            <!--<ul class="links">
+          <li>
+            <a href="index.html">home</a>
+          </li>
+          <li>
+            <a href="about.html">about</a>
+          </li>
+          <li>
+            <a href="mytea43.html">mytea43</a>
+          </li>
+          <li>
+            <a href="contact.html">contact</a>
+          </li>
+        </ul>-->
+          </div>
+        </nav>
+        <div class="banner">
+          <div class="container1">
+            <h2>Mix your <span>custom tea</span>
+              <br>and get it <span>shipped
+                <br>for free</span>
+            </h2>
+          </div>
+        </div>
+      </header>
+      <!-- add-ingredients -->
+      <section id="add-ingredients" class="section">
+        <div class="ingredients">
+          <h3>Please choose your ingredients:</h3>
+          <div class="ingredient-btns">
+            <button class="tab-btn active" data-id="herbs">herbs</button>
+            <button class="tab-btn" data-id="fruits">fruits</button>
+            <button class="tab-btn" data-id="spices">spices</button>
+            <button class="tab-btn" data-id="seeds">seeds</button>
+            <button class="tab-btn" data-id="flowers">flowers</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="tea-and-slider" class="section grid-container">
+
+        <div class="item organic-btn">
+          <button class="organic-btn">100% <br>organic</button>
+        </div>
+
+        <div class="item drag-text">
+          <h3>Drag, to adjust your selection:</h3>
+        </div>
+
+        <div class="item tea-cup-animation">
+          <div class="main">
+            <div class="cup">
+              <div class="smoke-holder">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="tea"></div>
+            </div>
+            <div class="saucer"></div>
+          </div>
+        </div>
+
+        <div class="item multi-range-slider">
+          <input type="range" min="0" max="100" value="0" id="slider">
+        </div>
+
+        <div class="item ingredient-list">
+          <p>% ingredient 1</p>
+          <p>% ingredient 2</p>
+          <p>% ingredient 3</p>
+          <p>% ingredient 4</p>
+          <p>% ingredient 5</p>
+        </div>
+
+      </section>
+
+      <section id="choose-quantity" class="section">
+        <div class="quantity-text">
+          <h3>Choose quantity:</h3>
+        </div>
+        <div class="quantity-btns">
+          <button class="tab-btn active" data-id="small">small <br>50g</button>
+          <button class="tab-btn" data-id="medium">medium <br>200g</button>
+          <button class="tab-btn" data-id="large">large <br>800g</button>
+        </div>
+        <div class="quantity-range">
+          <input type="range" min="20" max="2000" value="20" step="10">
+        </div>
+      </section>
+
+      <section id="packaging-method" class="section">
+        <div class="packaging-text">
+          <h3>Choose packaging method:</h3>
+        </div>
+        <div class="packaging-btns">
+          <img src="images/tea-bag.webp" alt="">
+          <button class="tab-btn active" data-id="tea-bag">tea bag x * x g</button>
+          <img src="images/loose-tea-packaging.webp" alt="">
+          <button class="tab-btn" data-id="loose">loose ingredients x g</button>
+        </div>
+      </section>
+
+      <section id="name-mix" class="section">
+        <div class="name-tea">
+          <h3>Please name your creation:</h3>
+          <input type="text" placeholder="suggestion based on ingredient names">
+        </div>
+      </section>
+
+      <section id="price-and-checkout" class="section">
+        <h3>Price: </h3>
+        <p>10 €</p>
+        <button class="share-btn">
+          <p>Share <br>discount</p>
+          <img src="images/share_heart_red.webp" alt="">
+        </button>
+        <button>Add to cart <br>& mix new</button>
+        <button>Proceed to <br>checkout</button>
+      </section>
+
+    </div>
+    <footer id="footer">
+      <div class="legal-info">
+        <a href="#">
+          <p>legal</p>
+        </a>
+      </div>
+      <div class="privacy-info">
+        <a href="#">
+          <p>privacy</p>
+        </a>
+      </div>
+      <div class="email-contact">
+        <a href="">
+          <p>contact</p>
+        </a>
+      </div>
+      <div class="socials">
+        <a href="#">
+          <img src="images/youtube.svg" alt="">
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>
